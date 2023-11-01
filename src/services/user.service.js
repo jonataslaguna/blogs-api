@@ -1,6 +1,12 @@
 const { User } = require('../models');
 const { generateToken } = require('../utils/token/generateToken');
 
+const getUsers = async () => {
+  const users = await User.findAll({ attributes: { exclude: ['password'] } });
+
+  return { status: 200, data: users };
+};
+
 const createUser = async (user) => {
   const { email } = user;
 
@@ -23,4 +29,5 @@ const createUser = async (user) => {
 
 module.exports = {
   createUser,
+  getUsers,
 };
