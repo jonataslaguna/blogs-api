@@ -1,16 +1,16 @@
-const { BlogPost, Category, PostCategory } = require('../models');
+const { BlogPost, Category, PostCategory, sequelize } = require('../models');
 
-const findNewPost = async (published) => {
-  const newPost = await BlogPost.findOne({ where: { published } });
+const findNewPost = async (published, transaction) => {
+  const newPost = await BlogPost.findOne({ where: { published }, transaction });
   return newPost;
 };
 
-const createPostCategory = async (categoryIds, postId) => {
+const createPostCategory = async (categoryIds, postId, transaction) => {
   await Promise.all(categoryIds.map(async (categoryId) => {
     await PostCategory.create({
       postId,
       categoryId,
-    });
+    }, { transaction });
   }));
 };
 
@@ -30,25 +30,30 @@ const existCategories = async (categoryIds) => {
   return categories;
 };
 
-const createNewPost = async ({ title, content, categoryIds }, userId) => {
-  const newPostCreate = await BlogPost
-    .create({ title, content, userId, published: new Date(), updated: new Date() });
+const createNewPost = async ({ 
+  title, content, categoryIds }, userId) => sequelize.transaction(async (t) => {
+  const newPostCreate = await BlogPost.create(
+    { title, content, userId, published: new Date(), updated: new Date() },
+    { transaction: t },
+  );
 
-  const { id, title: titlePost, content: postContent, published, 
-    updated } = await findNewPost(newPostCreate.published);
+  const { id, 
+    title: titlePost, 
+    content: postContent, published, updated } = await findNewPost(newPostCreate.published, t);
 
-  await createPostCategory(categoryIds, id);
+  await createPostCategory(categoryIds, id, t);
 
-  const newPost = { id,
+  const newPost = {
+    id,
     title: titlePost,
     content: postContent,
     userId,
     updated,
     published,
   };
-  
+
   return { status: 201, data: newPost };
-};
+});
 
 module.exports = {
   createNewPost,
