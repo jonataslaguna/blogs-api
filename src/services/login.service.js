@@ -8,7 +8,11 @@ const executeLogin = async ({ email, password }) => {
 
   if (!findUser) return { status: 400, data: { message: 'Invalid fields' } };
   
+  const { id, displayName } = findUser;
+
   const payload = {
+    id,
+    displayName,
     email,
   };
     
