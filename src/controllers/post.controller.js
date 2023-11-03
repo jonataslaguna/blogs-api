@@ -3,7 +3,7 @@ const { postService } = require('../services');
 const getPosts = async (_req, res) => {
   const { status, data } = await postService.getPosts();
 
-  res.status(status).json(data);
+  return res.status(status).json(data);
 };
 
 const getPostById = async (req, res) => {
@@ -11,7 +11,17 @@ const getPostById = async (req, res) => {
 
   const { status, data } = await postService.getPostById(id);
 
-  res.status(status).json(data);
+  return res.status(status).json(data);
+};
+
+const updatePost = async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+  const { user } = req;
+
+  const { status, data } = await postService.updatePost(id, user.id, { title, content });
+
+  return res.status(status).json(data);
 };
 
 const createNewPost = async (req, res) => {
@@ -27,4 +37,5 @@ module.exports = {
   createNewPost,
   getPosts,
   getPostById,
+  updatePost,
 };

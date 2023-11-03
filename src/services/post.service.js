@@ -20,6 +20,28 @@ const getPostById = async (id) => {
   return { status: 200, data: post };
 };
 
+const updatePost = async (id, userId, { title, content }) => {
+  const findPost = await BlogPost.findOne({
+    where: { id },
+    include: { model: User, as: 'user' },
+  });
+ 
+  if (userId !== findPost.userId) return { status: 401, data: { message: 'Unauthorized user' } };
+
+  await BlogPost.update(
+    { title, content },
+    { where: { id } },
+  );
+
+  const updatedPost = await BlogPost.findOne({
+    where: { id },
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } }, 
+      { model: Category, as: 'categories', through: { attributes: [] } }],
+  });
+
+  return { status: 200, data: updatedPost };
+};
+
 const findNewPost = async (published, transaction) => {
   const newPost = await BlogPost.findOne({ where: { published }, transaction });
   return newPost;
@@ -80,4 +102,5 @@ module.exports = {
   existCategories,
   getPosts,
   getPostById,
+  updatePost,
 };

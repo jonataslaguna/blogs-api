@@ -1,5 +1,11 @@
 const Joi = require('joi');
 
+const validateBodyUpdatePost = (body) => 
+  Joi.object({
+    title: Joi.string().trim().min(1).required(),
+    content: Joi.string().trim().min(1).required(), 
+  }).validate(body);
+
 const validateBodyCreatePost = (body) => 
   Joi.object({
     title: Joi.string().trim().min(1).required(),
@@ -19,4 +25,5 @@ const validateBodyCreateUser = (body) =>
 module.exports = {
   validateBodyCreateUser,
   validateBodyCreatePost,
+  validateBodyUpdatePost,
 };
