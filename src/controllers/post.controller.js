@@ -1,5 +1,11 @@
 const { postService } = require('../services');
 
+const getPosts = async (_req, res) => {
+  const { status, data } = await postService.getPosts();
+
+  res.status(status).json(data);
+};
+
 const createNewPost = async (req, res) => {
   const newPost = req.body;
   const { user } = req;
@@ -11,4 +17,5 @@ const createNewPost = async (req, res) => {
 
 module.exports = {
   createNewPost,
+  getPosts,
 };

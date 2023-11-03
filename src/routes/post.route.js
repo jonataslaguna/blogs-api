@@ -4,6 +4,8 @@ const { auth, validateCreateNewPost } = require('../middlewares');
 
 const route = express.Router();
 
+route.get('/', auth, postController.getPosts);
+
 route.post('/', auth, validateCreateNewPost, postController.createNewPost);
 
 module.exports = route;
