@@ -8,6 +8,18 @@ const getPosts = async () => {
   return { status: 200, data: posts };
 };
 
+const getPostById = async (id) => {
+  const post = await BlogPost.findOne({
+    where: { id },
+    include: [{ model: User, as: 'user', attributes: { exclude: ['password'] } }, 
+      { model: Category, as: 'categories' }],
+  });
+
+  if (!post) return { status: 404, data: { message: 'Post does not exist' } };
+
+  return { status: 200, data: post };
+};
+
 const findNewPost = async (published, transaction) => {
   const newPost = await BlogPost.findOne({ where: { published }, transaction });
   return newPost;
@@ -67,4 +79,5 @@ module.exports = {
   createNewPost,
   existCategories,
   getPosts,
+  getPostById,
 };
