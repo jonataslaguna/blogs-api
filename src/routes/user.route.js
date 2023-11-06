@@ -10,4 +10,6 @@ route.get('/:id', auth, userController.getUserById);
 
 route.post('/', validadeCreateUser, userController.createUser);
 
+route.delete('/me', auth, userController.removeUser);
+
 module.exports = route;

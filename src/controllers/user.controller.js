@@ -24,8 +24,17 @@ const createUser = async (req, res) => {
   return res.status(status).json({ token: data });
 };
 
+const removeUser = async (req, res) => {
+  const { user: { id } } = req;
+
+  const { status } = await userService.removeUser(id);
+
+  return res.status(status).end();
+};
+
 module.exports = {
   createUser,
   getUsers,
   getUserById,
+  removeUser,
 };
