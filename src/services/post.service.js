@@ -42,6 +42,22 @@ const updatePost = async (id, userId, { title, content }) => {
   return { status: 200, data: updatedPost };
 };
 
+const removePost = async (id, userId) => {
+  const findPost = await BlogPost.findOne({
+    where: { id },
+    include: { model: User, as: 'user' },
+  });
+  if (!findPost) return { status: 404, data: { message: 'Post does not exist' } };
+ 
+  if (userId !== findPost.userId) return { status: 401, data: { message: 'Unauthorized user' } };
+
+  BlogPost.destroy({
+    where: { id },
+  });
+
+  return { status: 204 };
+};
+
 const findNewPost = async (published, transaction) => {
   const newPost = await BlogPost.findOne({ where: { published }, transaction });
   return newPost;
@@ -103,4 +119,5 @@ module.exports = {
   getPosts,
   getPostById,
   updatePost,
+  removePost,
 };

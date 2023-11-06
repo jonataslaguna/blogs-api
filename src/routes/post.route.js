@@ -12,4 +12,6 @@ route.post('/', auth, validateCreateNewPost, postController.createNewPost);
 
 route.put('/:id', auth, validateUpdatePost, postController.updatePost);
 
+route.delete('/:id', auth, postController.removePost);
+
 module.exports = route;
