@@ -6,6 +6,14 @@ const getPosts = async (_req, res) => {
   return res.status(status).json(data);
 };
 
+const searchPost = async (req, res) => {
+  const { q } = req.query;
+
+  const { status, data } = await postService.searchPost(q);
+
+  return res.status(status).json(data);
+};
+
 const getPostById = async (req, res) => {
   const { id } = req.params;
 
@@ -49,4 +57,5 @@ module.exports = {
   getPostById,
   updatePost,
   removePost,
+  searchPost,
 };
