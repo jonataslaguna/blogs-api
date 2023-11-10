@@ -95,7 +95,7 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
 - **Encontrar o usuário pelo Id:**
   - Endpoint: `GET /user/:id`
 
-- **Criar Conta:**
+- **Criar Usuário:**
   - Endpoint: `POST /user`
   - O corpo da requisição deve estar neste formato abaixo:
   
@@ -108,9 +108,9 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
     }
     ```
 
-- **Remover conta:**
+- **Remover usuário:**
   - Endpoint: `DELETE user/me`
-  - Remove apenas se a conta solicitada pertencer ao usuário logado.
+  - Remove remove os dados do usuário do banco de dados, apenas se pertencer ao usuário logado.
 
 ### Posts
 
