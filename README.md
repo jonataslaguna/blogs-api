@@ -110,7 +110,7 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
 
 - **Remover usuário:**
   - Endpoint: `DELETE user/me`
-  - Remove remove os dados do usuário do banco de dados, apenas se pertencer ao usuário logado.
+  - Remove os dados do usuário do banco de dados, apenas se pertencer ao usuário logado.
 
 ### Posts
 
