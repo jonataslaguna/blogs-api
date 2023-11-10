@@ -1,4 +1,4 @@
-# Store Manager
+# Blogs API
 
 API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco de dados para a produção de conteúdo para um blog. 
 
