@@ -39,7 +39,9 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
   -  O avaliador espera que a versão do `node` utilizada seja a 16.
 
 <details>
-  <summary  id="diagrama"><strong>🎲 Diagrama ER e Entidades</strong></summary>
+  <summary  id="diagrama">
+    <strong>🎲 Diagrama ER e Entidades</strong>
+  </summary>
 
 #### Formato das entidades
 
