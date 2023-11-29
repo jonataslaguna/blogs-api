@@ -167,7 +167,7 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
 
      ```json
     {
-       "name": "Typescript"
+       "name": "TypeScript"
     }
     ```
 
