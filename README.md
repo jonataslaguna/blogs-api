@@ -4,6 +4,12 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
 
 ## Instalação
 
+#### Após clonar o repositório, navegue até a raíz do projeto e instale as dependências com o comando:
+
+```bash
+npm install
+```
+
 🐳 Iniciando a aplicação no Docker Compose
 
 > Antes de começar, seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) ou [na documentação](https://docs.docker.com/compose/install/) como instalá-lo. No primeiro artigo, você pode substituir onde está com `1.26.0` por `1.29.2`.**
@@ -64,7 +70,7 @@ API RESTful Node.js com sequelize utilizando a arquitetura em camadas e um banco
     ```
 </details>
 
-## Principais Funcionalidades
+## Funcionalidades
 
 ### Login
 
