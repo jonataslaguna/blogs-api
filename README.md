@@ -191,5 +191,5 @@ Este projeto está aberto para contribuições. Se você deseja contribuir, siga
 
 ## Contato
 
-Se você deseja entrar em contato comigo, sinta-se à vontade para enviar um e-mail para [jonataslaguna.js@email.com](mailto:jonataslaguna.js@email.com).
+Se você deseja entrar em contato comigo, sinta-se à vontade para enviar um e-mail para [jonataslaguna.js@gmail.com](mailto:jonataslaguna.js@gmail.com).
 
