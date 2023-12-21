@@ -88,7 +88,7 @@ npm install
   
     ```json
     {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZGlzcGxheU5hbWUiOiJMZXdpcyBIYW1pbHRvbiIsImVtYWlsIjoibGV3aXNoYW1pbHRvbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk2MzY2NDR9.FagS0qw9Nv8uUQDaId7AWoCGIy8QAEVJxy2ZN_ZDWUM"
+      "token": "eyJhbGciOiJI[...]"
     }
     ```
 
